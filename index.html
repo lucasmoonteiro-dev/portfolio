@@ -4,59 +4,223 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Lucas Coelho - Portfólio</title>
+
   <style>
-    * { box-sizing: border-box; margin: 0; padding: 0; }
-    body { font-family: Arial, sans-serif; line-height: 1.6; background: #f4f4f4; color: #333; }
-    header, footer { background: #222; color: #fff; text-align: center; padding: 30px 20px; }
-    section { padding: 40px 20px; max-width: 1000px; margin: auto; }
-    h1, h2, h3, h4 { color: #111; }
-    .services, .portfolio, .product-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 20px; margin-top: 20px; }
-    .card { background: #fff; padding: 20px; border-radius: 10px; box-shadow: 0 2px 6px rgba(0,0,0,0.1); }
-    .btn { background: #28a745; color: white; padding: 10px 20px; text-decoration: none; border-radius: 5px; display: inline-block; margin-top: 10px; border: none; cursor: pointer; }
-    .btn:hover { background: #218838; }
-    .contact { text-align: center; }
-    footer p { margin-top: 10px; font-size: 0.9em; }
-
-    .app-selector {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 10px;
-      margin-top: 20px;
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
     }
 
-    .selector-btn {
-      border: 1px solid #ccc;
-      background: #fff;
-      padding: 10px 16px;
-      border-radius: 999px;
-      cursor: pointer;
-      font-weight: bold;
+    body {
+      font-family: Arial, sans-serif;
+      line-height: 1.6;
+      background: #f4f4f4;
+      color: #333;
     }
 
-    .selector-btn.active {
-      background: #111;
+    header, footer {
+      background: #222;
       color: #fff;
-      border-color: #111;
+      text-align: center;
+      padding: 30px 20px;
     }
 
-    .app-panel {
-      display: none;
-      margin-top: 20px;
+    header h1,
+    header p,
+    footer p {
+      color: #fff;
+    }
+
+    section {
+      padding: 40px 20px;
+      max-width: 1100px;
+      margin: auto;
+    }
+
+    h1, h2, h3, h4 {
+      color: #111;
+    }
+
+    .logo-area {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 14px;
+      flex-wrap: wrap;
+    }
+
+    .logo-img {
+      width: 72px;
+      height: 72px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 3px solid #fff;
       background: #fff;
-      border-radius: 12px;
-      padding: 22px;
+    }
+
+    .cover-image {
+      width: 100%;
+      height: 320px;
+      object-fit: cover;
+      border-radius: 18px;
+      margin-bottom: 22px;
+      box-shadow: 0 4px 18px rgba(0,0,0,0.12);
+    }
+
+    .services,
+    .portfolio-grid,
+    .product-grid,
+    .service-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 20px;
+      margin-top: 20px;
+    }
+
+    .card,
+    .demo-card,
+    .product-card,
+    .service-card,
+    .summary-box {
+      background: #fff;
+      padding: 20px;
+      border-radius: 14px;
       box-shadow: 0 2px 10px rgba(0,0,0,0.08);
     }
 
-    .app-panel.active {
+    .demo-card {
+      cursor: pointer;
+      transition: transform 0.2s, box-shadow 0.2s;
+      border: 2px solid transparent;
+    }
+
+    .demo-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 6px 18px rgba(0,0,0,0.12);
+      border-color: #28a745;
+    }
+
+    .demo-icon {
+      font-size: 2.2rem;
+      margin-bottom: 10px;
+    }
+
+    .card-img {
+      width: 100%;
+      height: 170px;
+      object-fit: cover;
+      border-radius: 12px;
+      margin-bottom: 14px;
+      background: #ddd;
+    }
+
+    .btn {
+      background: #28a745;
+      color: white;
+      padding: 11px 18px;
+      text-decoration: none;
+      border-radius: 8px;
+      display: inline-block;
+      margin-top: 10px;
+      border: none;
+      cursor: pointer;
+      font-weight: bold;
+      font-size: 0.95rem;
+    }
+
+    .btn:hover {
+      background: #218838;
+    }
+
+    .btn-secondary {
+      background: #222;
+    }
+
+    .btn-secondary:hover {
+      background: #000;
+    }
+
+    .page {
+      display: none;
+    }
+
+    .page.active {
       display: block;
+    }
+
+    .hero {
+      background: #fff;
+      border-radius: 18px;
+      padding: 32px;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.08);
+      margin-bottom: 25px;
+    }
+
+    .hero-doces {
+      background: #fff4f7;
+    }
+
+    .hero-salao {
+      background: #f3f0ff;
+    }
+
+    .hero-content {
+      display: grid;
+      grid-template-columns: 1.2fr 0.8fr;
+      gap: 24px;
+      align-items: center;
+    }
+
+    .hero-content img {
+      width: 100%;
+      height: 260px;
+      object-fit: cover;
+      border-radius: 16px;
+    }
+
+    .price {
+      color: #1a7f37;
+      font-weight: bold;
+      margin: 8px 0;
+      font-size: 1.05rem;
+    }
+
+    .small-text {
+      font-size: 0.92rem;
+      color: #666;
+      margin-top: 6px;
+    }
+
+    .qty-control {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-top: 12px;
+    }
+
+    .qty-control button {
+      width: 34px;
+      height: 34px;
+      border: none;
+      border-radius: 50%;
+      background: #222;
+      color: #fff;
+      cursor: pointer;
+      font-size: 1.1rem;
+    }
+
+    .qty-control span {
+      min-width: 24px;
+      text-align: center;
+      font-weight: bold;
     }
 
     .form-grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-      gap: 12px;
-      margin-top: 12px;
+      gap: 14px;
+      margin-top: 16px;
     }
 
     label {
@@ -67,192 +231,717 @@
       font-weight: bold;
     }
 
-    input, select {
+    input,
+    select,
+    textarea {
       border: 1px solid #ccc;
       border-radius: 8px;
       padding: 10px;
       font: inherit;
-    }
-
-    .status-box {
-      margin-top: 12px;
-      background: #eef8ff;
-      color: #0b4b6f;
-      border: 1px solid #b8e3ff;
-      border-radius: 8px;
-      padding: 10px;
-      min-height: 46px;
-    }
-
-    .product-card {
-      border: 1px solid #e5e5e5;
-      border-radius: 10px;
-      padding: 14px;
       background: #fff;
     }
 
-    .price {
-      color: #1a7f37;
-      font-weight: bold;
-      margin: 8px 0;
+    textarea {
+      min-height: 90px;
+      resize: vertical;
+    }
+
+    .summary-box {
+      margin-top: 25px;
+      border-left: 5px solid #28a745;
+    }
+
+    .summary-list {
+      margin: 12px 0;
+      padding-left: 18px;
+    }
+
+    .selected {
+      border: 2px solid #28a745;
+      background: #f1fff5;
+    }
+
+    .service-card {
+      cursor: pointer;
+      border: 2px solid transparent;
+      transition: 0.2s;
+    }
+
+    .service-card:hover {
+      border-color: #28a745;
+    }
+
+    .contact {
+      text-align: center;
+    }
+
+    footer p {
+      margin-top: 10px;
+      font-size: 0.9em;
+    }
+
+    @media (max-width: 700px) {
+      header {
+        padding: 24px 16px;
+      }
+
+      section {
+        padding: 30px 16px;
+      }
+
+      .hero {
+        padding: 24px 18px;
+      }
+
+      .hero-content {
+        grid-template-columns: 1fr;
+      }
+
+      .cover-image {
+        height: 230px;
+      }
+
+      .hero-content img {
+        height: 220px;
+      }
     }
   </style>
 </head>
+
 <body>
 
 <header>
-  <h1>Lucas Coelho</h1>
-  <p>Sites e Aplicativos sob medida para pequenos negócios</p>
+  <div class="logo-area">
+    <img
+      src="https://images.unsplash.com/photo-1517841905240-472988babdf9?auto=format&fit=crop&w=300&q=80"
+      alt="Logo Lucas Coelho"
+      class="logo-img"
+    >
+
+    <div>
+      <h1>Lucas Coelho</h1>
+      <p>Sites e aplicativos sob medida para pequenos negócios</p>
+    </div>
+  </div>
 </header>
 
-<section>
-  <h2>Sobre Mim</h2>
-  <p>Sou desenvolvedor focado em soluções digitais acessíveis e eficazes para pequenos comércios. Minha missão é ajudar negócios locais a crescer com sites rápidos, funcionais e com design moderno.</p>
-</section>
+<main>
 
-<section>
-  <h2>Serviços</h2>
-  <div class="services">
-    <div class="card">
-      <h3>Sites Profissionais</h3>
-      <p>Criação de sites com layout responsivo, integração com WhatsApp e Google Maps.</p>
-    </div>
-    <div class="card">
-      <h3>Aplicativos Simples</h3>
-      <p>Apps para cardápio digital, agendamento ou catálogo de produtos.</p>
-    </div>
-    <div class="card">
-      <h3>Landing Pages</h3>
-      <p>Páginas únicas otimizadas para campanhas e geração de leads.</p>
-    </div>
+  <!-- HOME / PORTFÓLIO -->
+  <div id="homePage" class="page active">
+
+    <section>
+      <img
+        src="https://images.unsplash.com/photo-1497366754035-f200968a6e72?auto=format&fit=crop&w=1400&q=80"
+        alt="Foto de capa do portfólio"
+        class="cover-image"
+      >
+
+      <h2>Sobre Mim</h2>
+      <p>
+        Sou desenvolvedor focado em soluções digitais acessíveis e eficazes para pequenos comércios.
+        Minha missão é ajudar negócios locais a crescer com sites rápidos, funcionais e com design moderno.
+      </p>
+    </section>
+
+    <section>
+      <h2>Serviços</h2>
+
+      <div class="services">
+        <div class="card">
+          <h3>Sites Profissionais</h3>
+          <p>Criação de sites com layout responsivo, integração com WhatsApp e Google Maps.</p>
+        </div>
+
+        <div class="card">
+          <h3>Cardápios Digitais</h3>
+          <p>Sites para venda de produtos, cardápio online e pedidos enviados direto para o WhatsApp.</p>
+        </div>
+
+        <div class="card">
+          <h3>Agendamentos Online</h3>
+          <p>Páginas para clientes escolherem serviço, data, horário e enviarem o agendamento pelo WhatsApp.</p>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <h2>Exemplos de Sites</h2>
+      <p>Clique em um card abaixo para visualizar uma demonstração completa.</p>
+
+      <div class="portfolio-grid">
+
+        <div class="demo-card" onclick="showPage('docesPage')">
+          <img
+            src="https://images.unsplash.com/photo-1488477181946-6428a0291777?auto=format&fit=crop&w=900&q=80"
+            alt="Loja de doces"
+            class="card-img"
+          >
+
+          <div class="demo-icon">🍫</div>
+          <h3>Loja de Doces</h3>
+          <p>
+            Cardápio digital com brigadeiros, brownies, cookies, valores,
+            controle de quantidade e envio do pedido pelo WhatsApp.
+          </p>
+          <button class="btn">Ver exemplo</button>
+        </div>
+
+        <div class="demo-card" onclick="showPage('salaoPage')">
+          <img
+            src="https://images.unsplash.com/photo-1560066984-138dadb4c035?auto=format&fit=crop&w=900&q=80"
+            alt="Salão de cabeleireiro"
+            class="card-img"
+          >
+
+          <div class="demo-icon">💇‍♀️</div>
+          <h3>Salão de Cabeleireiro</h3>
+          <p>
+            Página de serviços com cortes, escova, hidratação, coloração,
+            escolha de data, horário e envio do agendamento pelo WhatsApp.
+          </p>
+          <button class="btn">Ver exemplo</button>
+        </div>
+
+      </div>
+    </section>
+
+    <section class="contact">
+      <h2>Fale comigo</h2>
+      <p>Quer criar o site do seu negócio? Me chame no WhatsApp ou envie um e-mail.</p>
+      <a href="https://wa.me/55SEUNUMEROAQUI" class="btn">WhatsApp</a>
+      <p style="margin-top: 10px;">ou envie e-mail para <strong>seuemail@email.com</strong></p>
+    </section>
+
   </div>
-</section>
 
-<section>
-  <h2>Portfólio com 2 apps no mesmo código</h2>
-  <p>Você pode apresentar os dois modelos em um único projeto e só trocar de app na hora da demonstração.</p>
+  <!-- SITE LOJA DE DOCES -->
+  <div id="docesPage" class="page">
 
-  <div class="app-selector">
-    <button class="selector-btn active" data-app="agendamento">App 1: Agendamento</button>
-    <button class="selector-btn" data-app="doces">App 2: Loja de Doces + WhatsApp</button>
+    <section>
+      <button class="btn btn-secondary" onclick="showPage('homePage')">← Voltar ao portfólio</button>
+    </section>
+
+    <section>
+      <div class="hero hero-doces">
+        <div class="hero-content">
+          <div>
+            <h2>🍫 Doce Encanto</h2>
+            <p>
+              Doces artesanais feitos com carinho. Escolha seus produtos,
+              informe seus dados e envie o pedido direto pelo WhatsApp.
+            </p>
+          </div>
+
+          <img
+            src="https://images.unsplash.com/photo-1488477181946-6428a0291777?auto=format&fit=crop&w=900&q=80"
+            alt="Doces artesanais"
+          >
+        </div>
+      </div>
+
+      <h2>Cardápio</h2>
+
+      <div class="product-grid">
+
+        <div class="product-card">
+          <img
+            src="https://images.unsplash.com/photo-1578985545062-69928b1d9587?auto=format&fit=crop&w=800&q=80"
+            alt="Brigadeiro Gourmet"
+            class="card-img"
+          >
+
+          <h3>Brigadeiro Gourmet</h3>
+          <p>Caixa com 6 unidades. Sabores: tradicional, ninho e meio amargo.</p>
+          <p class="price">R$ 18,00</p>
+
+          <div class="qty-control">
+            <button onclick="changeQty('Brigadeiro Gourmet', 18, -1)">-</button>
+            <span id="qty-Brigadeiro-Gourmet">0</span>
+            <button onclick="changeQty('Brigadeiro Gourmet', 18, 1)">+</button>
+          </div>
+        </div>
+
+        <div class="product-card">
+          <img
+            src="https://images.unsplash.com/photo-1606313564200-e75d5e30476c?auto=format&fit=crop&w=800&q=80"
+            alt="Brownie de Chocolate"
+            class="card-img"
+          >
+
+          <h3>Brownie de Chocolate</h3>
+          <p>Brownie macio, com casquinha crocante e recheio especial.</p>
+          <p class="price">R$ 12,00</p>
+
+          <div class="qty-control">
+            <button onclick="changeQty('Brownie de Chocolate', 12, -1)">-</button>
+            <span id="qty-Brownie-de-Chocolate">0</span>
+            <button onclick="changeQty('Brownie de Chocolate', 12, 1)">+</button>
+          </div>
+        </div>
+
+        <div class="product-card">
+          <img
+            src="https://images.unsplash.com/photo-1499636136210-6f4ee915583e?auto=format&fit=crop&w=800&q=80"
+            alt="Cookie Recheado"
+            class="card-img"
+          >
+
+          <h3>Cookie Recheado</h3>
+          <p>Cookie artesanal com recheio de chocolate, ninho ou doce de leite.</p>
+          <p class="price">R$ 10,00</p>
+
+          <div class="qty-control">
+            <button onclick="changeQty('Cookie Recheado', 10, -1)">-</button>
+            <span id="qty-Cookie-Recheado">0</span>
+            <button onclick="changeQty('Cookie Recheado', 10, 1)">+</button>
+          </div>
+        </div>
+
+        <div class="product-card">
+          <img
+            src="https://images.unsplash.com/photo-1464349095431-e9a21285b5f3?auto=format&fit=crop&w=800&q=80"
+            alt="Bolo no Pote"
+            class="card-img"
+          >
+
+          <h3>Bolo no Pote</h3>
+          <p>Sabores: chocolate, ninho com morango e prestígio.</p>
+          <p class="price">R$ 14,00</p>
+
+          <div class="qty-control">
+            <button onclick="changeQty('Bolo no Pote', 14, -1)">-</button>
+            <span id="qty-Bolo-no-Pote">0</span>
+            <button onclick="changeQty('Bolo no Pote', 14, 1)">+</button>
+          </div>
+        </div>
+
+        <div class="product-card">
+          <img
+            src="https://images.unsplash.com/photo-1551024506-0bccd828d307?auto=format&fit=crop&w=800&q=80"
+            alt="Copinho da Felicidade"
+            class="card-img"
+          >
+
+          <h3>Copinho da Felicidade</h3>
+          <p>Camadas de creme, brownie, morango e cobertura.</p>
+          <p class="price">R$ 16,00</p>
+
+          <div class="qty-control">
+            <button onclick="changeQty('Copinho da Felicidade', 16, -1)">-</button>
+            <span id="qty-Copinho-da-Felicidade">0</span>
+            <button onclick="changeQty('Copinho da Felicidade', 16, 1)">+</button>
+          </div>
+        </div>
+
+        <div class="product-card">
+          <img
+            src="https://images.unsplash.com/photo-1527515545081-5db817172677?auto=format&fit=crop&w=800&q=80"
+            alt="Mini Pudim"
+            class="card-img"
+          >
+
+          <h3>Mini Pudim</h3>
+          <p>Pudim individual cremoso com calda artesanal.</p>
+          <p class="price">R$ 9,00</p>
+
+          <div class="qty-control">
+            <button onclick="changeQty('Mini Pudim', 9, -1)">-</button>
+            <span id="qty-Mini-Pudim">0</span>
+            <button onclick="changeQty('Mini Pudim', 9, 1)">+</button>
+          </div>
+        </div>
+
+      </div>
+
+      <div class="summary-box">
+        <h3>Finalizar pedido</h3>
+
+        <div id="cartSummary">
+          <p>Nenhum item selecionado ainda.</p>
+        </div>
+
+        <div class="form-grid">
+          <label>
+            Seu nome
+            <input id="doceCliente" type="text" placeholder="Digite seu nome" />
+          </label>
+
+          <label>
+            Forma de recebimento
+            <select id="doceEntrega">
+              <option value="Retirada">Retirada</option>
+              <option value="Entrega">Entrega</option>
+            </select>
+          </label>
+
+          <label>
+            Endereço, se for entrega
+            <input id="doceEndereco" type="text" placeholder="Rua, número, bairro" />
+          </label>
+        </div>
+
+        <label style="margin-top: 14px;">
+          Observações
+          <textarea id="doceObs" placeholder="Ex.: sem granulado, sabor ninho, entregar após 18h..."></textarea>
+        </label>
+
+        <button class="btn" onclick="sendCandyOrder()">Enviar pedido pelo WhatsApp</button>
+      </div>
+
+    </section>
+
   </div>
 
-  <article id="agendamento" class="app-panel active">
-    <h3>Demo: Agendamento de serviços (ex.: salão/cabeleireiro)</h3>
-    <p>Simulação de agendamento rápido com confirmação em tela.</p>
+  <!-- SITE SALÃO -->
+  <div id="salaoPage" class="page">
 
-    <div class="form-grid">
-      <label>
-        Nome do cliente
-        <input id="cliente" type="text" placeholder="Digite seu nome" />
-      </label>
+    <section>
+      <button class="btn btn-secondary" onclick="showPage('homePage')">← Voltar ao portfólio</button>
+    </section>
 
-      <label>
-        Serviço
-        <select id="servico">
-          <option value="Corte masculino">Corte masculino</option>
-          <option value="Corte feminino">Corte feminino</option>
-          <option value="Barba">Barba</option>
-          <option value="Escova">Escova</option>
-        </select>
-      </label>
+    <section>
+      <div class="hero hero-salao">
+        <div class="hero-content">
+          <div>
+            <h2>💇‍♀️ Studio Bella</h2>
+            <p>
+              Agende seu horário de forma rápida. Escolha o procedimento,
+              selecione dia e horário e envie a solicitação pelo WhatsApp.
+            </p>
+          </div>
 
-      <label>
-        Data
-        <input id="data" type="date" />
-      </label>
-
-      <label>
-        Horário
-        <input id="hora" type="time" />
-      </label>
-    </div>
-
-    <button class="btn" id="agendarBtn">Confirmar agendamento</button>
-    <div id="agendamentoStatus" class="status-box">Nenhum agendamento confirmado ainda.</div>
-  </article>
-
-  <article id="doces" class="app-panel">
-    <h3>Demo: Site de compras (doces) com redirecionamento para WhatsApp</h3>
-    <p>Selecione um item e clique em <strong>Comprar no WhatsApp</strong> para abrir conversa com mensagem pronta.</p>
-
-    <div class="product-grid">
-      <div class="product-card">
-        <h4>Brigadeiro Gourmet (caixa c/ 6)</h4>
-        <p class="price">R$ 18,00</p>
-        <button class="btn buy-btn" data-product="Brigadeiro Gourmet (caixa c/ 6)">Comprar no WhatsApp</button>
+          <img
+            src="https://images.unsplash.com/photo-1560066984-138dadb4c035?auto=format&fit=crop&w=900&q=80"
+            alt="Salão de cabeleireiro"
+          >
+        </div>
       </div>
 
-      <div class="product-card">
-        <h4>Brownie de Chocolate</h4>
-        <p class="price">R$ 12,00</p>
-        <button class="btn buy-btn" data-product="Brownie de Chocolate">Comprar no WhatsApp</button>
+      <h2>Serviços disponíveis</h2>
+      <p class="small-text">Clique em um serviço para selecionar.</p>
+
+      <div class="service-grid">
+
+        <div class="service-card" onclick="selectSalonService(this, 'Corte Feminino', 70)">
+          <img
+            src="https://images.unsplash.com/photo-1522337360788-8b13dee7a37e?auto=format&fit=crop&w=800&q=80"
+            alt="Corte Feminino"
+            class="card-img"
+          >
+
+          <h3>Corte Feminino</h3>
+          <p>Corte personalizado de acordo com o estilo da cliente.</p>
+          <p class="price">R$ 70,00</p>
+        </div>
+
+        <div class="service-card" onclick="selectSalonService(this, 'Corte Masculino', 45)">
+          <img
+            src="https://images.unsplash.com/photo-1503951914875-452162b0f3f1?auto=format&fit=crop&w=800&q=80"
+            alt="Corte Masculino"
+            class="card-img"
+          >
+
+          <h3>Corte Masculino</h3>
+          <p>Corte moderno, social ou degradê.</p>
+          <p class="price">R$ 45,00</p>
+        </div>
+
+        <div class="service-card" onclick="selectSalonService(this, 'Escova', 60)">
+          <img
+            src="https://images.unsplash.com/photo-1521590832167-7bcbfaa6381f?auto=format&fit=crop&w=800&q=80"
+            alt="Escova"
+            class="card-img"
+          >
+
+          <h3>Escova</h3>
+          <p>Finalização com escova para diferentes tipos de cabelo.</p>
+          <p class="price">R$ 60,00</p>
+        </div>
+
+        <div class="service-card" onclick="selectSalonService(this, 'Hidratação', 80)">
+          <img
+            src="https://images.unsplash.com/photo-1562322140-8baeececf3df?auto=format&fit=crop&w=800&q=80"
+            alt="Hidratação"
+            class="card-img"
+          >
+
+          <h3>Hidratação</h3>
+          <p>Tratamento para brilho, maciez e recuperação dos fios.</p>
+          <p class="price">R$ 80,00</p>
+        </div>
+
+        <div class="service-card" onclick="selectSalonService(this, 'Coloração', 150)">
+          <img
+            src="https://images.unsplash.com/photo-1522335789203-aabd1fc54bc9?auto=format&fit=crop&w=800&q=80"
+            alt="Coloração"
+            class="card-img"
+          >
+
+          <h3>Coloração</h3>
+          <p>Aplicação de cor, tonalização ou retoque de raiz.</p>
+          <p class="price">A partir de R$ 150,00</p>
+        </div>
+
+        <div class="service-card" onclick="selectSalonService(this, 'Manicure', 35)">
+          <img
+            src="https://images.unsplash.com/photo-1604654894610-df63bc536371?auto=format&fit=crop&w=800&q=80"
+            alt="Manicure"
+            class="card-img"
+          >
+
+          <h3>Manicure</h3>
+          <p>Cutilagem, esmaltação e acabamento.</p>
+          <p class="price">R$ 35,00</p>
+        </div>
+
+        <div class="service-card" onclick="selectSalonService(this, 'Design de Sobrancelha', 40)">
+          <img
+            src="https://images.unsplash.com/photo-1519415510236-718bdfcd89c8?auto=format&fit=crop&w=800&q=80"
+            alt="Design de Sobrancelha"
+            class="card-img"
+          >
+
+          <h3>Design de Sobrancelha</h3>
+          <p>Modelagem de sobrancelhas personalizada.</p>
+          <p class="price">R$ 40,00</p>
+        </div>
+
+        <div class="service-card" onclick="selectSalonService(this, 'Progressiva', 180)">
+          <img
+            src="https://images.unsplash.com/photo-1580618672591-eb180b1a973f?auto=format&fit=crop&w=800&q=80"
+            alt="Progressiva"
+            class="card-img"
+          >
+
+          <h3>Progressiva</h3>
+          <p>Alinhamento dos fios com avaliação prévia.</p>
+          <p class="price">A partir de R$ 180,00</p>
+        </div>
+
       </div>
 
-      <div class="product-card">
-        <h4>Cookie Recheado</h4>
-        <p class="price">R$ 10,00</p>
-        <button class="btn buy-btn" data-product="Cookie Recheado">Comprar no WhatsApp</button>
-      </div>
-    </div>
-  </article>
-</section>
+      <div class="summary-box">
+        <h3>Agendar horário</h3>
 
-<section class="contact">
-  <h2>Fale comigo</h2>
-  <p>Quer criar o site do seu negócio? Me chame no WhatsApp ou envie um e-mail.</p>
-  <a href="https://wa.me/55SEUNUMEROAQUI" class="btn">WhatsApp</a>
-  <p style="margin-top: 10px;">ou envie e-mail para <strong>seuemail@email.com</strong></p>
-</section>
+        <p id="selectedServiceText">Nenhum serviço selecionado ainda.</p>
+
+        <div class="form-grid">
+          <label>
+            Nome do cliente
+            <input id="salaoCliente" type="text" placeholder="Digite seu nome" />
+          </label>
+
+          <label>
+            Telefone
+            <input id="salaoTelefone" type="text" placeholder="Ex.: (11) 99999-9999" />
+          </label>
+
+          <label>
+            Data desejada
+            <input id="salaoData" type="date" />
+          </label>
+
+          <label>
+            Horário desejado
+            <input id="salaoHora" type="time" />
+          </label>
+        </div>
+
+        <label style="margin-top: 14px;">
+          Observações
+          <textarea id="salaoObs" placeholder="Ex.: quero fazer corte e hidratação no mesmo dia..."></textarea>
+        </label>
+
+        <button class="btn" onclick="sendSalonAppointment()">Enviar agendamento pelo WhatsApp</button>
+      </div>
+
+    </section>
+
+  </div>
+
+</main>
 
 <footer>
   <p>&copy; 2026 Lucas Coelho. Todos os direitos reservados.</p>
 </footer>
 
 <script>
-  const selectorButtons = document.querySelectorAll('.selector-btn');
-  const appPanels = document.querySelectorAll('.app-panel');
+  /*
+    Troque pelos números reais.
+    Formato: 55 + DDD + número.
+    Exemplo: 5511999999999
+  */
+  const WHATSAPP_DOCES = '55SEUNUMEROAQUI';
+  const WHATSAPP_SALAO = '55SEUNUMEROAQUI';
 
-  selectorButtons.forEach((button) => {
-    button.addEventListener('click', () => {
-      const targetId = button.dataset.app;
+  function showPage(pageId) {
+    const pages = document.querySelectorAll('.page');
 
-      selectorButtons.forEach((btn) => btn.classList.remove('active'));
-      appPanels.forEach((panel) => panel.classList.remove('active'));
-
-      button.classList.add('active');
-      document.getElementById(targetId).classList.add('active');
+    pages.forEach(page => {
+      page.classList.remove('active');
     });
-  });
 
-  const agendarBtn = document.getElementById('agendarBtn');
-  const agendamentoStatus = document.getElementById('agendamentoStatus');
+    document.getElementById(pageId).classList.add('active');
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }
 
-  agendarBtn.addEventListener('click', () => {
-    const cliente = document.getElementById('cliente').value.trim();
-    const servico = document.getElementById('servico').value;
-    const data = document.getElementById('data').value;
-    const hora = document.getElementById('hora').value;
+  // Loja de doces
+  const cart = {};
 
-    if (!cliente || !data || !hora) {
-      agendamentoStatus.textContent = 'Preencha nome, data e horário para confirmar.';
+  function normalizeId(text) {
+    return text.replaceAll(' ', '-');
+  }
+
+  function changeQty(productName, price, change) {
+    if (!cart[productName]) {
+      cart[productName] = {
+        price: price,
+        qty: 0
+      };
+    }
+
+    cart[productName].qty += change;
+
+    if (cart[productName].qty < 0) {
+      cart[productName].qty = 0;
+    }
+
+    const qtyElement = document.getElementById('qty-' + normalizeId(productName));
+    qtyElement.textContent = cart[productName].qty;
+
+    updateCartSummary();
+  }
+
+  function updateCartSummary() {
+    const cartSummary = document.getElementById('cartSummary');
+    const selectedItems = Object.keys(cart).filter(item => cart[item].qty > 0);
+
+    if (selectedItems.length === 0) {
+      cartSummary.innerHTML = '<p>Nenhum item selecionado ainda.</p>';
       return;
     }
 
-    agendamentoStatus.textContent = `✅ Agendamento confirmado para ${cliente}: ${servico} em ${data} às ${hora}.`;
-  });
+    let total = 0;
+    let html = '<ul class="summary-list">';
 
-  const whatsappNumber = '55SEUNUMEROAQUI';
-  const buyButtons = document.querySelectorAll('.buy-btn');
+    selectedItems.forEach(item => {
+      const itemTotal = cart[item].qty * cart[item].price;
+      total += itemTotal;
 
-  buyButtons.forEach((button) => {
-    button.addEventListener('click', () => {
-      const product = button.dataset.product;
-      const message = encodeURIComponent(`Olá! Quero comprar: ${product}. Pode me passar mais detalhes?`);
-      const waLink = `https://wa.me/${whatsappNumber}?text=${message}`;
-      window.open(waLink, '_blank');
+      html += `
+        <li>
+          ${cart[item].qty}x ${item} - R$ ${itemTotal.toFixed(2).replace('.', ',')}
+        </li>
+      `;
     });
-  });
+
+    html += '</ul>';
+    html += `<p><strong>Total estimado: R$ ${total.toFixed(2).replace('.', ',')}</strong></p>`;
+
+    cartSummary.innerHTML = html;
+  }
+
+  function sendCandyOrder() {
+    const selectedItems = Object.keys(cart).filter(item => cart[item].qty > 0);
+
+    if (selectedItems.length === 0) {
+      alert('Selecione pelo menos um doce antes de enviar o pedido.');
+      return;
+    }
+
+    const cliente = document.getElementById('doceCliente').value.trim();
+    const entrega = document.getElementById('doceEntrega').value;
+    const endereco = document.getElementById('doceEndereco').value.trim();
+    const obs = document.getElementById('doceObs').value.trim();
+
+    if (!cliente) {
+      alert('Preencha seu nome antes de enviar o pedido.');
+      return;
+    }
+
+    let total = 0;
+    let itensTexto = '';
+
+    selectedItems.forEach(item => {
+      const itemTotal = cart[item].qty * cart[item].price;
+      total += itemTotal;
+      itensTexto += `- ${cart[item].qty}x ${item} - R$ ${itemTotal.toFixed(2).replace('.', ',')}\n`;
+    });
+
+    const message =
+`Olá! Quero fazer um pedido na Doce Encanto.
+
+Nome: ${cliente}
+
+Itens:
+${itensTexto}
+Total estimado: R$ ${total.toFixed(2).replace('.', ',')}
+
+Forma de recebimento: ${entrega}
+Endereço: ${endereco || 'Não informado'}
+
+Observações: ${obs || 'Nenhuma'}`;
+
+    const waLink = `https://wa.me/${WHATSAPP_DOCES}?text=${encodeURIComponent(message)}`;
+    window.open(waLink, '_blank');
+  }
+
+  // Salão
+  let selectedSalonService = null;
+
+  function selectSalonService(cardElement, serviceName, price) {
+    const serviceCards = document.querySelectorAll('.service-card');
+
+    serviceCards.forEach(card => {
+      card.classList.remove('selected');
+    });
+
+    cardElement.classList.add('selected');
+
+    selectedSalonService = {
+      name: serviceName,
+      price: price
+    };
+
+    document.getElementById('selectedServiceText').innerHTML =
+      `<strong>Serviço selecionado:</strong> ${serviceName} - R$ ${price.toFixed(2).replace('.', ',')}`;
+  }
+
+  function sendSalonAppointment() {
+    if (!selectedSalonService) {
+      alert('Selecione um serviço antes de enviar o agendamento.');
+      return;
+    }
+
+    const cliente = document.getElementById('salaoCliente').value.trim();
+    const telefone = document.getElementById('salaoTelefone').value.trim();
+    const data = document.getElementById('salaoData').value;
+    const hora = document.getElementById('salaoHora').value;
+    const obs = document.getElementById('salaoObs').value.trim();
+
+    if (!cliente || !data || !hora) {
+      alert('Preencha nome, data e horário antes de enviar o agendamento.');
+      return;
+    }
+
+    const message =
+`Olá! Quero agendar um horário no Studio Bella.
+
+Nome: ${cliente}
+Telefone: ${telefone || 'Não informado'}
+
+Serviço: ${selectedSalonService.name}
+Valor estimado: R$ ${selectedSalonService.price.toFixed(2).replace('.', ',')}
+
+Data desejada: ${data}
+Horário desejado: ${hora}
+
+Observações: ${obs || 'Nenhuma'}`;
+
+    const waLink = `https://wa.me/${WHATSAPP_SALAO}?text=${encodeURIComponent(message)}`;
+    window.open(waLink, '_blank');
+  }
 </script>
 
 </body>
